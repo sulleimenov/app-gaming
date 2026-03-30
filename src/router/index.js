@@ -3,10 +3,14 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import GradeView from '../views/GradeView.vue';
 import ReflectionView from '../views/ReflectionView.vue';
+import DashboardView from '../views/DashboardView.vue';
+import TasksView from '../views/TasksView.vue';
 
 const routes = [
 	{ path: '/', name: 'home', component: HomeView },
+	{ path: '/dashboard', name: 'teams', component: DashboardView },
 	{ path: '/grade', name: 'grade', component: GradeView },
+	{ path: '/tasks', name: 'teams', component: TasksView },
 	{ path: '/reflection', name: 'reflection', component: ReflectionView },
 ];
 

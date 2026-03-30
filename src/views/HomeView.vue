@@ -55,7 +55,7 @@ const shouldShow = (item) => {
 };
 
 const buyItem = async (item) => {
-	if (props.user.points < item.price) return alert('Недостаточно кредитов');
+	if (props.user.points < item.price) return alert('Недостаточно монет');
 
 	const updatedUser = {
 		...props.user,
@@ -118,20 +118,54 @@ const selectedItem = computed(() =>
 
 			<div class="relative scale-[1.2] transition-transform duration-700">
 				<div
-					class="absolute -top-10 left-1/2 -translate-x-1/2 flex flex-col items-center z-50 pointer-events-none"
+					class="absolute -top-16 left-1/2 -translate-x-1/2 flex flex-col items-center z-50 pointer-events-none"
 				>
 					<div
-						class="flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 px-6 py-2 rounded-full backdrop-blur-sm shadow-[0_0_15px_rgba(249,115,22,0.2)]"
+						class="relative bg-black/60 border border-orange-500/40 p-1 rounded-2xl backdrop-blur-xl shadow-[0_0_30px_rgba(249,115,22,0.2)]"
 					>
-						<span
-							class="text-[20px] font-black text-white uppercase tracking-[0.2em] whitespace-nowrap"
-						>
-							{{ user.firstName }}
-						</span>
+						<div
+							class="absolute -top-2 -left-1 w-2 h-2 border-t border-l border-orange-500"
+						></div>
+						<div
+							class="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-orange-500"
+						></div>
+
+						<div class="flex flex-col items-center px-6 py-2 min-w-[160px]">
+							<div
+								class="text-[14px] font-black text-white uppercase tracking-[0.2em] leading-tight"
+							>
+								{{ user.firstName }}
+							</div>
+
+							<div class="flex items-center gap-3 w-full my-1">
+								<div
+									class="h-[1px] bg-gradient-to-r from-transparent via-orange-500/50 to-transparent flex-grow"
+								></div>
+								<span
+									class="text-[9px] font-black text-orange-500 tracking-tighter opacity-70"
+									>UNIT</span
+								>
+								<div
+									class="h-[1px] bg-gradient-to-r from-transparent via-orange-500/50 to-transparent flex-grow"
+								></div>
+							</div>
+
+							<div
+								class="text-[14px] font-black text-white uppercase tracking-[0.2em] leading-tight"
+							>
+								{{ user.secondName }}
+							</div>
+						</div>
 					</div>
-					<div
-						class="w-px h-4 bg-gradient-to-b from-orange-500/50 to-transparent"
-					></div>
+
+					<div class="flex flex-col items-center">
+						<div
+							class="w-px h-8 bg-gradient-to-b from-orange-500 to-transparent"
+						></div>
+						<div
+							class="w-1.5 h-1.5 rounded-full bg-orange-500 -mt-1 shadow-[0_0_10px_#f97316]"
+						></div>
+					</div>
 				</div>
 
 				<div
@@ -172,9 +206,9 @@ const selectedItem = computed(() =>
 						<span class="w-2 h-2 bg-orange-500 rounded-full"></span>
 						Магазин
 					</h3>
-					<span class="text-[10px] text-slate-500 font-mono italic"
-						>Найдено: {{ filteredItems.length }}</span
-					>
+					<span class="text-[20px]">
+						Твои монеты за урок: {{ user.points.toLocaleString() }}
+					</span>
 				</div>
 
 				<div class="flex flex-wrap gap-2 mb-8">
@@ -253,7 +287,7 @@ const selectedItem = computed(() =>
 					<div
 						class="w-12 h-12 bg-orange-600 rounded-xl flex items-center justify-center text-2xl shadow-lg shadow-orange-900/40"
 					>
-						{{ selectedItem.icon }}
+						<img :src="`/${selectedItem.icon}.svg`" alt="" width="40" />
 					</div>
 					<div>
 						<div class="text-white font-black uppercase text-xs">
@@ -268,13 +302,13 @@ const selectedItem = computed(() =>
 					v-else
 					class="text-slate-500 text-[10px] uppercase tracking-[0.2em] italic"
 				>
-					Наведите на модуль для предварительного просмотра
+					Кликните на инвентарь для предварительного просмотра
 				</div>
 
 				<button
 					v-if="selectedItem"
 					@click="buyItem(selectedItem)"
-					class="bg-orange-600 hover:bg-orange-500 text-white px-8 py-3 rounded-xl font-black uppercase text-[10px] transition-all shadow-xl shadow-orange-900/20 active:scale-95"
+					class="bg-orange-600 hover:bg-orange-500 text-white px-8 py-3 rounded-xl font-black uppercase text-[14px] transition-all shadow-xl shadow-orange-900/20 active:scale-95"
 				>
 					Купить: {{ selectedItem.price }} монет
 				</button>
