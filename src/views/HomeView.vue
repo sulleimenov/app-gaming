@@ -59,6 +59,7 @@ const getItemStyle = (id) => {
 		1: 'top-0 z-10', // Костюм (базовый слой)
 		2: 'top-0 z-30 drop-shadow-[0_0_15px_rgba(249,115,22,0.5)]', // Шлем (сверху)
 		3: 'bottom-0 z-20', // Обувь
+		8: 'bottom-0 z-[-1]', // Обувь
 	};
 	return styles[id] || '';
 };
