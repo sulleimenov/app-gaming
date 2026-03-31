@@ -115,6 +115,13 @@ const refreshUserData = async () => {
 				>
 					Рефлексия
 				</router-link>
+				<router-link
+					to="/dashboard"
+					class="flex-1 text-center py-3 rounded-xl text-[14px] uppercase tracking-widest text-slate-400 transition-all"
+					active-class="bg-orange-600 text-white shadow-lg shadow-orange-900/20"
+				>
+					Подиум
+				</router-link>
 			</nav>
 
 			<router-view :user="user" @refresh="refreshUserData" />

@@ -1,22 +1,12 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import { shopItems } from '@/data/shopItems';
 
 const props = defineProps(['user']);
 const users = ref([]);
 const isLoading = ref(true);
 
 const API_URL = 'https://69c60516f272266f3eabc8e6.mockapi.io/users';
-
-const shopItems = [
-	{ id: '1', name: 'Костюм космонавта', icon: 'suit-1', category: 'clothing' },
-	{ id: '2', name: 'Шлем космонавта', icon: 'hat-1', category: 'hats' },
-	{
-		id: '3',
-		name: 'Сборная Казахстана',
-		icon: 'suit-football-1',
-		category: 'clothing',
-	},
-];
 
 const moodMap = {
 	1: { emoji: '😩', label: 'Тяжело' },

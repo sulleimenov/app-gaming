@@ -8,7 +8,7 @@ import TasksView from '../views/TasksView.vue';
 
 const routes = [
 	{ path: '/', name: 'home', component: HomeView },
-	{ path: '/dashboard', name: 'teams', component: DashboardView },
+	{ path: '/dashboard', name: 'dashboard', component: DashboardView },
 	{ path: '/grade', name: 'grade', component: GradeView },
 	{ path: '/tasks', name: 'teams', component: TasksView },
 	{ path: '/reflection', name: 'reflection', component: ReflectionView },

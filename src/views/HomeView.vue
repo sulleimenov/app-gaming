@@ -1,33 +1,9 @@
 <script setup>
 import { ref, computed } from 'vue';
+import { shopItems } from '@/data/shopItems';
 
 const props = defineProps(['user']);
 const emit = defineEmits(['refresh']);
-
-// 1. Расширенный список товаров с категориями
-const shopItems = [
-	{
-		id: '1',
-		name: 'Костюм космонавта',
-		price: 20,
-		icon: 'suit-1',
-		category: 'clothing',
-	},
-	{
-		id: '2',
-		name: 'Шлем космонавта',
-		price: 20,
-		icon: 'hat-1',
-		category: 'hats',
-	},
-	{
-		id: '3',
-		name: 'Сборная Казахстана',
-		price: 15,
-		icon: 'suit-football-1',
-		category: 'clothing',
-	},
-];
 
 // 2. Определение категорий
 const categories = [
@@ -178,7 +154,7 @@ const selectedItem = computed(() =>
 					<transition name="equip">
 						<div
 							v-if="shouldShow(item)"
-							class="absolute transition-all duration-300"
+							class="absolute transition-all duration-300 z-20 bottom-0"
 							:class="[getItemStyle(item.id), previewId === item.id ? '' : '']"
 						>
 							<img :src="`/${item.icon}.svg`" alt="" width="600" />
